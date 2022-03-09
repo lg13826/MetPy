@@ -768,8 +768,24 @@ class MetPyDatasetAccessor:
                     'x'
                 )
             except AttributeError:
-                # This means that we don't even have sufficient coordinates, so skip
-                pass
+                # If there isn't sufficient coordinates, default to 0, give warning to user.
+                # Ideally this would approximate based on other coordinates
+                # I think this way it'll make it easier to see what's missing
+                log.debug('One or more variables are missing')
+                if latitude == None
+                    log.debug('Latitude defaulting to 0')
+                    latitude = 0
+                if y == None
+                    log.debug('Y defaulting to 0')
+                    y = 0
+                if longitude == None
+                    log.debug('Longitude defaulting to 0')
+                    longitude = 0
+                if x == None
+                    log.debug('X defaulting to 0')
+                    x = 0
+                
+                    
             else:
                 if latitude.identical(y) and longitude.identical(x):
                     crs = CFProjection({'grid_mapping_name': 'latitude_longitude'})
